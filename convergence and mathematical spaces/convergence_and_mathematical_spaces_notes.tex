@@ -1,0 +1,225 @@
+\documentclass[10pt,a4paper]{article}
+
+% typography %
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools} % e.g. mathclap
+\usepackage{bbm}
+\usepackage{enumerate}
+
+% spacing %
+\usepackage[pass]{geometry}
+\usepackage{changepage} % e.g. adjustwidth 
+\usepackage{setspace} % line spacing 
+
+% urls %
+\usepackage{hyperref}
+
+% color %
+\usepackage{xcolor} 
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,   
+    urlcolor=blue,
+}
+
+
+% tables & figures %
+\usepackage{graphicx}
+\usepackage{tikz, tikz-qtree}
+\usepackage{slashbox} 
+\usepackage{float} % positioning of tables and figures
+\usepackage{caption} 
+\captionsetup[table]{skip=2pt}
+
+% misc %
+\usepackage[makeroom]{cancel} % cancellation sign
+\usepackage{authblk} % customise authors and affiliations
+
+% codes %
+\usepackage{listings}
+\lstset{language=MATLAB,%
+	basicstyle=\scriptsize\ttfamily,
+	commentstyle=\ttfamily\color{gray},
+	numbers=left,
+	numberstyle=\ttfamily\color{gray}\footnotesize,
+	stepnumber=1,
+	numbersep=5pt,
+	backgroundcolor=\color{white},    
+    breaklines=true,%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    frame = single,
+    numbersep=5pt, % this defines how far the numbers are from the text
+	caption={}
+}
+
+\lstset{
+language=R,
+basicstyle=\scriptsize\ttfamily,
+commentstyle=\ttfamily\color{gray},
+numbers=left,
+numberstyle=\ttfamily\color{gray}\footnotesize,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+title=\lstname,
+escapeinside={},
+keywordstyle={},
+morekeywords={},
+caption={}
+}
+
+% code block %
+\newenvironment{codeblock}{\ttfamily}{\par}
+\def\code#1{\texttt{#1}} % inline %
+
+
+% definitions %
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\def\floor#1{\lfloor{#1}\rfloor}
+\def\ceil#1{\lceil{#1}\rceil}
+\def\liminfn#1{\liminf_{n \rightarrow #1}}
+\def\limsupn#1{\limsup_{n \rightarrow #1}}
+\def\limn#1{\lim_{n \rightarrow #1}}
+\def\limN#1{\lim_{N \rightarrow #1}}
+
+% definitions: theorems %
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{notation}{Notation}
+\newtheorem*{concept}{Concept}
+\newtheorem*{outline}{Outline}
+\newtheorem*{definition}{Definition}
+\newtheorem{problem}{Problem}
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+
+% definitions: probability %
+\def\Xbd{\textbf{X}}
+\def\Ybd{\textbf{Y}}
+\def\P{\mathbbm{P}}
+\def\E{\mathbbm{E}}
+\def\Var{\text{Var}}
+\def\eqd{\stackrel{d}{=}}
+
+% definitions: theorems %
+\def\bv{\boldsymbol{v}}
+\def\bw{\boldsymbol{w}}
+\def\bx{\boldsymbol{x}}
+\def\by{\boldsymbol{y}}
+\def\bz{\boldsymbol{z}}
+\def\bf{\boldsymbol{f}}
+\def\bA{\boldsymbol{A}}
+\def\bAT{{\bA}^\top}
+\def\bATA{{\bA}^\top \bA}
+\def\bI{\boldsymbol{I}}
+\def\bf{\boldsymbol{f}}
+
+\def\hbx{\hat{\bx}}
+
+\def\sig{\sigma}
+\def\sigs{\sigma^2}
+\def\hsig{\hat{\sigma}}
+\def\tsig{\tilde{\sigma}}
+\def\onesig{\frac{1}{\sigma}}
+\def\onesigs{\frac{1}{\sigma^2}}
+\def\onehsig{\frac{1}{\hsig}}
+\def\onehsigs{\frac{1}{\hsig^2}}
+\def\fsigs{f_{\sigma^2}}
+
+\def\xkp{x_{k+1}}
+\def\xk{x_k}
+\def\xkm{x_{k-1}}
+\def\xj{x_j}
+
+\def\rmsekp{\textbf{RMSE}_{k+1}}
+\def\rmsekm{\textbf{RMSE}_{k-1}}
+\def\rmsek{\textbf{RMSE}_k}
+\def\rmseo{\textbf{RMSE}_1}
+\def\rmsef{\textbf{RMSE}_f}
+\def\bP{\boldsymbol{P}}
+\def\bQ{\boldsymbol{Q}}
+
+\def\a{\alpha}
+\def\l{\lambda}
+\def\ve{\varepsilon}
+
+\def\rf{\rho_f}
+\def\bef{\boldsymbol{\varepsilon_f}}
+\def\befhx{\bef(\hbx)}
+
+\def\bxkp{\bx_{k+1}}
+\def\bxk{\bx_k}
+\def\bxkm{\bx_{k-1}}
+\def\by{\boldsymbol{y}}
+\def\bM{\boldsymbol{M}}
+
+\def\bAT{\bA^\top}
+\def\bATA{\bAT \bA}
+\def\hby{\hat{\by}}
+
+\def\bB{\boldsymbol{B}}
+
+\def\sF{\mathcal{F}}
+\def\sX{\mathcal{X}}
+\def\sT{\mathcal{T}}
+\def\sP{\mathcal{P}}
+\def\sB{\mathcal{B}}
+\def\sU{\mathcal{U}}
+\def\sA{\mathcal{A}}
+
+\def\sL{\mathcal{L}}
+
+% defintions: special sets and functions %
+\def\R{\mathbbm{R}}
+\def\N{\mathbbm{N}}
+\def\C{\mathbbm{C}}
+\def\F{\mathbbm{F}}
+
+
+\def\ind{\mathbbm{1}}
+
+% special characters %
+\def\os{ø}
+ 
+% document-specific setting %
+
+\setlength\parindent{0pt} % spacing
+
+\graphicspath{{code/}} % image directory
+
+\title{Probabilistic and Unsupervised Learning Assignment 2}
+\author{Kevin H. Huang\footnote{PhD student, Gatsby Unit, UCL}}
+
+\begin{document}
+
+\newgeometry{left=1.0in, right=1.0in, top=1.2in, bottom=1.2in}
+
+\onehalfspacing
+
+\maketitle
+
+\vspace{-20pt}
+
+
+\end{document} 
+
+

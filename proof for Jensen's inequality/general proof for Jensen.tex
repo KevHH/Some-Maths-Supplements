@@ -1,0 +1,317 @@
+\documentclass[10pt,a4paper]{article}
+
+% typography %
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools} % e.g. mathclap
+\usepackage{bbm}
+
+% spacing %
+\usepackage[pass]{geometry}
+\usepackage{changepage} % e.g. adjustwidth 
+\usepackage{setspace} % line spacing 
+
+% urls %
+\usepackage{hyperref}
+
+% color %
+\usepackage{xcolor} 
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,   
+    urlcolor=blue,
+}
+
+
+% tables & figures %
+\usepackage{graphicx}
+\usepackage{tikz, tikz-qtree}
+\usepackage{slashbox} 
+\usepackage{float} % positioning of tables and figures
+\usepackage{caption} 
+\captionsetup[table]{skip=2pt}
+
+% misc %
+\usepackage[makeroom]{cancel} % cancellation sign
+\usepackage{authblk} % customise authors and affiliations
+
+% codes %
+\usepackage{listings}
+\lstset{language=MATLAB,%
+	basicstyle=\scriptsize\ttfamily,
+	commentstyle=\ttfamily\color{gray},
+	numbers=left,
+	numberstyle=\ttfamily\color{gray}\footnotesize,
+	stepnumber=1,
+	numbersep=5pt,
+	backgroundcolor=\color{white},    
+    breaklines=true,%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    frame = single,
+    numbersep=5pt, % this defines how far the numbers are from the text
+	caption={}
+}
+
+\lstset{
+language=R,
+basicstyle=\scriptsize\ttfamily,
+commentstyle=\ttfamily\color{gray},
+numbers=left,
+numberstyle=\ttfamily\color{gray}\footnotesize,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+title=\lstname,
+escapeinside={},
+keywordstyle={},
+morekeywords={},
+caption={}
+}
+
+% code block %
+\newenvironment{codeblock}{\ttfamily}{\par}
+\def\code#1{\texttt{#1}} % inline %
+
+
+% definitions %
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\def\floor#1{\lfloor{#1}\rfloor}
+\def\ceil#1{\lceil{#1}\rceil}
+\def\liminfn#1{\liminf_{n \rightarrow #1}}
+\def\limsupn#1{\limsup_{n \rightarrow #1}}
+\def\limn#1{\lim_{n \rightarrow #1}}
+\def\limN#1{\lim_{N \rightarrow #1}}
+
+% definitions: theorems %
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem*{remark}{Remark}\newtheorem*{notation}{Notation}
+\newtheorem*{concept}{Concept}
+\newtheorem*{outline}{Outline}
+\newtheorem*{definition}{Definition}
+\newtheorem{problem}{Problem}
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+
+% definitions: probability %
+\def\Xbd{\textbf{X}}
+\def\Ybd{\textbf{Y}}
+\def\P{\mathbbm{P}}
+\def\E{\mathbbm{E}}
+\def\Var{\text{Var}}
+\def\eqd{\stackrel{d}{=}}
+
+% definitions: theorems %
+\def\bx{\boldsymbol{x}}
+\def\by{\boldsymbol{y}}
+\def\bz{\boldsymbol{z}}
+\def\bf{\boldsymbol{f}}
+\def\bA{\boldsymbol{A}}
+\def\bAT{{\bA}^\top}
+\def\bATA{{\bA}^\top \bA}
+\def\bI{\boldsymbol{I}}
+\def\bf{\boldsymbol{f}}
+
+\def\hbx{\hat{\bx}}
+
+\def\sig{\sigma}
+\def\sigs{\sigma^2}
+\def\hsig{\hat{\sigma}}
+\def\tsig{\tilde{\sigma}}
+\def\onesig{\frac{1}{\sigma}}
+\def\onesigs{\frac{1}{\sigma^2}}
+\def\onehsig{\frac{1}{\hsig}}
+\def\onehsigs{\frac{1}{\hsig^2}}
+\def\fsigs{f_{\sigma^2}}
+
+\def\xkp{x_{k+1}}
+\def\xk{x_k}
+\def\xkm{x_{k-1}}
+\def\xj{x_j}
+
+\def\rmsekp{\textbf{RMSE}_{k+1}}
+\def\rmsekm{\textbf{RMSE}_{k-1}}
+\def\rmsek{\textbf{RMSE}_k}
+\def\rmseo{\textbf{RMSE}_1}
+\def\rmsef{\textbf{RMSE}_f}
+\def\bP{\boldsymbol{P}}
+\def\bQ{\boldsymbol{Q}}
+
+\def\a{\alpha}
+\def\l{\lambda}
+\def\ve{\varepsilon}
+
+\def\rf{\rho_f}
+\def\bef{\boldsymbol{\varepsilon_f}}
+\def\befhx{\bef(\hbx)}
+
+\def\bxkp{\bx_{k+1}}
+\def\bxk{\bx_k}
+\def\bxkm{\bx_{k-1}}
+\def\by{\boldsymbol{y}}
+\def\bM{\boldsymbol{M}}
+
+\def\bAT{\bA^\top}
+\def\bATA{\bAT \bA}
+\def\hby{\hat{\by}}
+
+\def\bB{\boldsymbol{B}}
+
+\def\sF{\mathcal{F}}
+\def\sX{\mathcal{X}}
+\def\sT{\mathcal{T}}
+\def\sP{\mathcal{P}}
+\def\sB{\mathcal{B}}
+\def\sA{\mathcal{A}}
+
+\def\sL{\mathcal{L}}
+
+% defintions: special sets and functions %
+\def\R{\mathbbm{R}}
+\def\N{\mathbbm{N}}
+\def\C{\mathbbm{C}}
+
+\def\ind{\mathbbm{1}}
+
+% special characters %
+\def\os{ø}
+ 
+% document-specific setting %
+
+\setlength\parindent{0pt} % spacing
+
+\graphicspath{{code/}} % image directory
+
+\title{Optional notes on general proof for Jensen's inequality}
+\author{Kevin H. Huang\footnote{PhD student, Gatsby Unit, UCL}}
+
+\begin{document}
+
+\newgeometry{left=1.0in, right=1.0in, top=1.2in, bottom=1.2in}
+
+\onehalfspacing
+
+\maketitle
+
+\vspace{-20pt}
+
+\textbf{Clarifications.} This is not the most general proof as we only consider real-valued random variable $X$ here. For the most general form with $X$ taking any values in a general topological space and with expectation allowed to be conditional expectations on any sub-sigma-algebra, one may refer to Wikipedia (\url{https://en.wikipedia.org/wiki/Jensen\%27s_inequality#General_inequality_in_a_probabilistic_setting}), which requires knowledge on topology and measure theory.
+
+\ 
+
+\noindent
+\textbf{Credits:} This is adapted from James Norris's Year 1 Probability Notes for the Mathematics course at Cambridge (\url{http://www.statslab.cam.ac.uk/~james/Lectures/p.pdf}) by filling in some details for readers with a less mathematical background. We also extend the argument to $\R^d$ which is much cleaner to remember if one is familiar with convexity and subdifferentials. I am grateful to Yudong Chen for his corrections.
+
+\section{1D case}
+
+We start with some definitions and lemmas (which turn out to be alternative definitions) to set things up. We will see that Jensen's is straightforward once these are established.
+
+\begin{definition}\textbf{(Integrability)}
+A real-valued random variable $X$ is integrable if $\E(|X|) < \infty$.
+\end{definition}
+
+\begin{definition}\textbf{(Convexity in 1D)} A function $f: I \rightarrow \R$ defined on a convex set $I \subset \R$ is convex if, for any $x,y \in I$ and $t \in [0,1]$,
+$$f\big(tx+(1-t)y\big) \leq tf(x) + (1-t)y.$$
+\end{definition}
+
+\begin{lemma} \label{alt_conv} \textbf{(Useful property (in fact alternative definition) of convexity)}
+For a convex function $f: I \rightarrow \R$ defined on $I \subset \R$, given any $x, m, y \in I$ with $x < m < y$, we have
+$$\frac{f(m)-f(x)}{m-x} \leq \frac{f(y)-f(m)}{y-m}.$$ 
+\end{lemma}
+
+\begin{remark}
+\textit{Intuitively this says the ``local gradient" of the function is increasing or the ``local second derivative" is non-negative.}
+\end{remark}
+
+\begin{proof}
+$x < m < y$ means there exists $t \in (0,1)$ such that $m=tx + (1-t)y$, so expressing $t$ in terms of $m$ and applying convexity,
+\begin{align*}
+f(m) &\leq \frac{y-m}{y-x} f(x) + \frac{m-x}{y-x} f(y) \\
+\frac{y-m}{y-x} f(m) + \frac{m-x}{y-x} f(m) &\leq \frac{y-m}{y-x} f(x) + \frac{m-x}{y-x} f(y) \quad \text{ 
+since }\frac{y-m}{y-x} + \frac{m-x}{y-x}  = 1 \\
+\frac{y-m}{y-x} \big( f(m) - f(x) \big) & \leq \frac{m-x}{y-x} \big( f(y) - f(m) \big)
+\end{align*}
+Scaling both sides by $\frac{y-x}{(y-m)(m-x)}$ gives the result.
+\end{proof}
+
+\begin{lemma} \label{prop_conv}\textbf{(Another useful property (in fact alternative definition) of convexity)} For a convex function $f: I \rightarrow \R$ defined on \textbf{an open interval} $I \subset R$, given any $m \in I$, there exists $a, b \in \R$ such that
+\begin{enumerate}
+\item $am+b = f(m),$
+\item $az+b \leq f(z)$ for any $z \in I.$
+\end{enumerate}
+\end{lemma}
+
+\begin{remark}
+\textit{Intuitively this says that a function has a ``supporting hyperplane" at any point $m \in I$. In fact in our extension to the n-dimensional case, and in the most general case on an abstract topology, this idea is characterised by replacing $a$ with any subgradient of $f$.}
+\end{remark}
+
+\begin{proof}
+By Lemma \ref{alt_conv}, for any $x, y \in I$ with $x<m<y$ (which exist because $I$ is open), we have
+$$\frac{f(m)-f(x)}{m-x} \leq \frac{f(y)-f(m)}{y-m},$$ 
+therefore 
+$$\sup_{x \in I, x \leq m}\frac{f(m)-f(x)}{m-x} \leq \inf_{y \in I, y \geq m}\frac{f(y)-f(m)}{y-m}.$$ 
+So there exists $a \in \R$ such that
+$$\sup_{x \in I, x \leq m}\frac{f(m)-f(x)}{m-x} \leq a \leq \inf_{y \in I, y \geq m}\frac{f(y)-f(m)}{y-m},$$ 
+i.e. there exists $a \in \R$ independent of the choice of $x$ and $y$ such that
+$$\frac{f(m)-f(x)}{m-x} \leq a \leq \frac{f(y)-f(m)}{y-m},$$ 
+for all $x, y \in I$ with $x \leq m \leq y$. Rearranging we get
+$a(z-m) + f(m) \leq f(z)$
+for any $z \in I$ \textit{(for $z \leq m$ set $z=x$ above, for $z > m$ set $z=y$ above)}. Defining $b = f(m) - am$ gives us statement 1 and 2 in the lemma. 
+\end{proof}
+
+\begin{remark}
+\textit{We have established that the convexity definition $\Rightarrow$ statement in Lemma \ref{alt_conv} $\Rightarrow$ statements in Lemma \ref{prop_conv}. The second statement in Lemma \ref{prop_conv} in fact imply the inequality in definition of convexity. One may see this by taking $m=tx+(1-t)y$ for $t \in (0,1)$, noting $b=f(m)-am$ to get $a(x-m) + f(m) \leq f(x)$ and $a(y-m) + f(m) \leq f(y)$, and finally taking a convex combination. For $t=0$ and $t=1$ it is trivial. Therefore, the statements in both lemmas are in fact alternative definitions of convexity. }
+\end{remark}
+
+\begin{theorem} (Jensen's inequality, 1D) For an integrable random variable $X$ taking values in an open interval $I \subset \R$, and a convex function $f: I \rightarrow \R$, we have
+$$f(\E(X)) \leq \E(f(X)).$$
+\end{theorem}
+\begin{proof}
+Take $m=\E(X)$ in Lemma \ref{prop_conv}, we have
+$$f(\E(X)) \stackrel{\text{by 1 of Lemma }\ref{prop_conv} }{=} a\E(X)+b \stackrel{\text{by linearity of }\E}{=} \E(aX+b) \stackrel{\text{by 2 of Lemma }\ref{prop_conv}}{\leq} \E(f(X)).$$
+\end{proof}
+
+\begin{remark}
+\textit{This is pretty trivial from Lemma \ref{prop_conv}, which we have seen is an alternative definition for convexity. In the case of strict convexity, one may show that statement 2 in Lemma \ref{prop_conv} becomes strict inequality for all $z \neq m$. The implication on Jensen's is that, for strictly convex function $f$, we have strict equality if and only if $X = \E(X)$ $\P$-almost surely, i.e. $X$ is constant with probability 1.}
+\end{remark}
+
+\section{$n$-dimensional case}
+
+
+
+\begin{theorem} (Jensen's Inequality) For an integrable random variable $X$ taking values in an open interval $I \subset \R^d$, and a convex function $f: I \rightarrow \R$, we have
+$$f(\E(X)) \leq \E(f(X)).$$
+\end{theorem} 
+
+\begin{proof}
+$I$ is open so $\E(X)$ (in fact any point in $I$) is in the interior of $I$, which implies subdifferential of $f$ on that point is nonempty. Let $g$ be a subgradient of $f$ at $\E(X)$ then
+\begin{align*}
+f(\E(X)) &= g^{\top} \E(X) + f(\E(X)) -  g^{\top} \E(X) \\
+&= \E\Big( g^{\top} X + f(\E(X)) -  g^{\top} \E(X) \Big) \\
+&\leq \E\Big( g^{\top} X + f(X) -  g^{\top} X \Big) \\
+& \qquad \text{ by definition of a subgradient at } \E(X) \text{ applied to the last two terms with respect to another point } X \\
+&= \E(f(X))
+\end{align*}
+\end{proof}
+
+\begin{remark} \textit{The similarity to the proof for 1D case is clear by matching $a$ with $g$ and $b$ with $f(\E(X)) -  g^{\top} \E(X)$.}
+\end{remark}
+
+\end{document} 
+
+
